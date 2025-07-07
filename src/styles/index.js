@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: 36,
         paddingHorizontal: 16,
+        paddingBottom: 24,
         gap: 8,
         backgroundColor: "#d4d4d8",
     },
@@ -12,9 +13,6 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: "bold",
     },
-    button: {
-        flexDirection: "row"
-    }
 })
 
 export { styles };

@@ -1,10 +1,9 @@
-import React from 'react';
 import {
   TouchableOpacity,
   Text,
   StyleSheet,
   ActivityIndicator,
-} from 'react-native';
+} from 'react-native'
 
 export const Button = ({
   title,
@@ -21,14 +20,14 @@ export const Button = ({
       justifyContent: 'center',
       flexDirection: 'row',
       flex: 1,
-    };
+    }
 
     const sizeStyles = {
-      default: { height: 40, paddingHorizontal: 16 },
-      sm: { height: 36, paddingHorizontal: 12 },
-      lg: { height: 44, paddingHorizontal: 20 },
-      icon: { height: 40, width: 40, paddingHorizontal: 0 },
-    };
+      default: { height: 40, maxHeight: 40, paddingHorizontal: 16 },
+      sm: { height: 36, maxHeight: 36, paddingHorizontal: 12 },
+      lg: { height: 44, maxHeight: 44, paddingHorizontal: 20 },
+      icon: { height: 40, maxHeight: 40, width: 40, paddingHorizontal: 0 },
+    }
 
     const variantStyles = {
       default: {
@@ -56,21 +55,21 @@ export const Button = ({
         backgroundColor: 'transparent',
         borderWidth: 0,
       },
-    };
+    }
 
     return {
       ...baseStyle,
       ...sizeStyles[size],
       ...variantStyles[variant],
       opacity: disabled ? 0.5 : 1,
-    };
-  };
+    }
+  }
 
   const getTextStyle = () => {
     const baseTextStyle = {
       fontWeight: '500',
       fontSize: 14,
-    };
+    }
 
     // Estilos de texto por tamanho
     const sizeTextStyles = {
@@ -78,7 +77,7 @@ export const Button = ({
       sm: { fontSize: 13 },
       lg: { fontSize: 16 },
       icon: { fontSize: 14 },
-    };
+    }
 
     // Estilos de texto por variante
     const variantTextStyles = {
@@ -88,14 +87,14 @@ export const Button = ({
       outline: { color: '#0f172a' },
       ghost: { color: '#0f172a' },
       link: { color: '#0f172a', textDecorationLine: 'underline' },
-    };
+    }
 
     return {
       ...baseTextStyle,
       ...sizeTextStyles[size],
       ...variantTextStyles[variant],
-    };
-  };
+    }
+  }
 
   return (
     <TouchableOpacity
@@ -107,15 +106,17 @@ export const Button = ({
       {loading && (
         <ActivityIndicator
           size="small"
-          color={variant === 'default' || variant === 'destructive' ? '#fafafa' : '#0f172a'}
+          color={
+            variant === 'default' || variant === 'destructive'
+              ? '#fafafa'
+              : '#0f172a'
+          }
           style={{ marginRight: 8 }}
         />
       )}
-      <Text style={[getTextStyle()]}>
-        {title}
-      </Text>
+      <Text style={[getTextStyle()]}>{title}</Text>
     </TouchableOpacity>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

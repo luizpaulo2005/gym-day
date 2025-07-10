@@ -31,7 +31,12 @@ const styles = StyleSheet.create({
   detailsSubItems: {
     fontSize: 16,
     color: '#4b5563',
-  }
+  },
+  button: {
+    padding: 4,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
 })
 
 export { styles }

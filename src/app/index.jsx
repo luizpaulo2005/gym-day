@@ -19,7 +19,6 @@ const Page = () => {
       try {
         const data = await getAtividades(db)
         setAtividades(data)
-        console.log('Atividades carregadas')
       } catch (err) {
         console.error('Erro ao carregar atividades:', err)
       }

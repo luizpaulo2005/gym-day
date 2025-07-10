@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import {
   ActivityIndicator,
   Image,
+  ScrollView,
   Text,
   TouchableOpacity,
   View,
@@ -48,7 +49,7 @@ const Page = () => {
         <Text style={styles.title}>Detalhes da atividade</Text>
       </View>
       {atividade ? (
-        <View>
+        <ScrollView>
           <Text style={styles.detailsTitle}>{atividade.titulo}</Text>
           {atividade.descricao && (
             <Text style={styles.detailsSubItems}>{atividade.descricao}</Text>
@@ -66,10 +67,15 @@ const Page = () => {
           {atividade.foto && (
             <Image
               source={{ uri: `data:image/jpeg;base64,${atividade.foto}` }}
-              style={{ width: '100%', height: 200, borderRadius: 8 }}
+              style={{
+                width: '100%',
+                height: 500,
+                borderRadius: 8,
+                objectFit: 'cover',
+              }}
             />
           )}
-        </View>
+        </ScrollView>
       ) : (
         <ActivityIndicator />
       )}

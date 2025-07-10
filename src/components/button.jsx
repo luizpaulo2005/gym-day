@@ -12,6 +12,7 @@ export const Button = ({
   size = 'default',
   disabled = false,
   loading = false,
+  ...props
 }) => {
   const getButtonStyle = () => {
     const baseStyle = {

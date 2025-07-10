@@ -1,5 +1,5 @@
 import { Button } from '@/components/button'
-import { ExerciseCard } from '@/components/exercise-card'
+import { AtividadeCard } from '@/components/atividade-card'
 import { styles } from '@/styles'
 import { useRouter } from 'expo-router'
 import { useEffect, useState } from 'react'
@@ -15,16 +15,33 @@ const Page = () => {
   const [atividades, setAtividades] = useState([])
 
   useEffect(() => {
-    getAtividades(db).then((data) => {
-      setAtividades(data)
-    })
-  })
+    const carregarAtividades = async () => {
+      try {
+        const data = await getAtividades(db)
+        setAtividades(data)
+        console.log('Atividades carregadas')
+      } catch (err) {
+        console.error('Erro ao carregar atividades:', err)
+      }
+    }
+
+    carregarAtividades()
+  }, [])
+
   return (
     <View style={styles.container}>
       <Text style={[styles.title, { marginTop: 16 }]}>GymDay</Text>
       {atividades.length > 0 ? (
         <ScrollView style={{ width: '100%' }}>
-          <ExerciseCard id="1" title="Supino Reto" />
+          {atividades.map((atividade) => {
+            return (
+              <AtividadeCard
+                key={atividade.id}
+                id={atividade.id}
+                titulo={atividade.titulo}
+              />
+            )
+          })}
         </ScrollView>
       ) : (
         <View
